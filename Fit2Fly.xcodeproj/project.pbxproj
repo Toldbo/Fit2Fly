@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9AFA2409C8B97013C345FE0F /* Pods_Fit2Fly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD3952F6AF491B702ED106D /* Pods_Fit2Fly.framework */; };
 		A1D3F9C61FDD98FC00B45DB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D3F9C51FDD98FC00B45DB6 /* AppDelegate.swift */; };
 		A1D3F9C81FDD98FC00B45DB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D3F9C71FDD98FC00B45DB6 /* ViewController.swift */; };
 		A1D3F9CB1FDD98FC00B45DB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D3F9C91FDD98FC00B45DB6 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		74F4B87AD72DAFCA2A4BC456 /* Pods-Fit2Fly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit2Fly.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fit2Fly/Pods-Fit2Fly.release.xcconfig"; sourceTree = "<group>"; };
 		A1D3F9C21FDD98FC00B45DB6 /* Fit2Fly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fit2Fly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D3F9C51FDD98FC00B45DB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1D3F9C71FDD98FC00B45DB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		A1D3F9E51FDD98FC00B45DB6 /* Fit2FlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fit2FlyUITests.swift; sourceTree = "<group>"; };
 		A1D3F9E71FDD98FC00B45DB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1D3F9F31FDDA3BA00B45DB6 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		AA8EDF97122C683C70ED00AA /* Pods-Fit2Fly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit2Fly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit2Fly/Pods-Fit2Fly.debug.xcconfig"; sourceTree = "<group>"; };
+		CCD3952F6AF491B702ED106D /* Pods_Fit2Fly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit2Fly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AFA2409C8B97013C345FE0F /* Pods_Fit2Fly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +81,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		048F1ED4C62C419FC4138A8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCD3952F6AF491B702ED106D /* Pods_Fit2Fly.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		06FBD3230BFA22A7A5701DD4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA8EDF97122C683C70ED00AA /* Pods-Fit2Fly.debug.xcconfig */,
+				74F4B87AD72DAFCA2A4BC456 /* Pods-Fit2Fly.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A1D3F9B91FDD98FC00B45DB6 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +105,8 @@
 				A1D3F9D91FDD98FC00B45DB6 /* Fit2FlyTests */,
 				A1D3F9E41FDD98FC00B45DB6 /* Fit2FlyUITests */,
 				A1D3F9C31FDD98FC00B45DB6 /* Products */,
+				06FBD3230BFA22A7A5701DD4 /* Pods */,
+				048F1ED4C62C419FC4138A8F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1D3F9EA1FDD98FC00B45DB6 /* Build configuration list for PBXNativeTarget "Fit2Fly" */;
 			buildPhases = (
+				A89C2138CFB75C8A30BA432F /* [CP] Check Pods Manifest.lock */,
 				A1D3F9BE1FDD98FC00B45DB6 /* Sources */,
 				A1D3F9BF1FDD98FC00B45DB6 /* Frameworks */,
 				A1D3F9C01FDD98FC00B45DB6 /* Resources */,
+				DB4DE7E5324569FB52092E35 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,6 +282,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A89C2138CFB75C8A30BA432F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fit2Fly-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB4DE7E5324569FB52092E35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Fit2Fly/Pods-Fit2Fly-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fit2Fly/Pods-Fit2Fly-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A1D3F9BE1FDD98FC00B45DB6 /* Sources */ = {
@@ -428,6 +493,7 @@
 		};
 		A1D3F9EB1FDD98FC00B45DB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA8EDF97122C683C70ED00AA /* Pods-Fit2Fly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -442,6 +508,7 @@
 		};
 		A1D3F9EC1FDD98FC00B45DB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74F4B87AD72DAFCA2A4BC456 /* Pods-Fit2Fly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
