@@ -16,6 +16,7 @@
 		A1D3F9DB1FDD98FC00B45DB6 /* Fit2FlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D3F9DA1FDD98FC00B45DB6 /* Fit2FlyTests.swift */; };
 		A1D3F9E61FDD98FC00B45DB6 /* Fit2FlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D3F9E51FDD98FC00B45DB6 /* Fit2FlyUITests.swift */; };
 		A1D3F9F41FDDA3BA00B45DB6 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D3F9F31FDDA3BA00B45DB6 /* Data.swift */; };
+		A1ED5EF520BF1B9F001AAACB /* PolygonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED5EF420BF1B9F001AAACB /* PolygonController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		A1D3F9E51FDD98FC00B45DB6 /* Fit2FlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fit2FlyUITests.swift; sourceTree = "<group>"; };
 		A1D3F9E71FDD98FC00B45DB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1D3F9F31FDDA3BA00B45DB6 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		A1ED5EF420BF1B9F001AAACB /* PolygonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonController.swift; sourceTree = "<group>"; };
 		AA8EDF97122C683C70ED00AA /* Pods-Fit2Fly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit2Fly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit2Fly/Pods-Fit2Fly.debug.xcconfig"; sourceTree = "<group>"; };
 		CCD3952F6AF491B702ED106D /* Pods_Fit2Fly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit2Fly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -130,6 +132,7 @@
 				A1D3F9CC1FDD98FC00B45DB6 /* Assets.xcassets */,
 				A1D3F9CE1FDD98FC00B45DB6 /* LaunchScreen.storyboard */,
 				A1D3F9D11FDD98FC00B45DB6 /* Info.plist */,
+				A1ED5EF420BF1B9F001AAACB /* PolygonController.swift */,
 			);
 			path = Fit2Fly;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			files = (
 				A1D3F9C81FDD98FC00B45DB6 /* ViewController.swift in Sources */,
 				A1D3F9F41FDDA3BA00B45DB6 /* Data.swift in Sources */,
+				A1ED5EF520BF1B9F001AAACB /* PolygonController.swift in Sources */,
 				A1D3F9C61FDD98FC00B45DB6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

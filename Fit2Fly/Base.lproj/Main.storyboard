@@ -158,7 +158,7 @@
                                 <state key="normal" title="Graph"/>
                                 <connections>
                                     <action selector="calculateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A09-cZ-kPv"/>
-                                    <segue destination="azX-XN-tti" kind="show" id="V0q-dk-h6T"/>
+                                    <segue destination="DJl-N6-iIp" kind="show" id="PyN-YH-oIu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -181,39 +181,39 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--Radar Chart View Controller-->
-        <scene sceneID="JCi-xk-g3C">
+        <!--Polygon Controller-->
+        <scene sceneID="fCw-ZF-itK">
             <objects>
-                <viewController id="azX-XN-tti" customClass="RadarChartViewController" customModule="Fit2Fly" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gXi-MW-an4">
+                <viewController id="DJl-N6-iIp" customClass="PolygonController" customModule="Fit2Fly" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pFa-sg-z5I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UE4-VN-FkB">
-                                <rect key="frame" x="131" y="590" width="101" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="calculateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RnA-78-U0P"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="arK-9q-532"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hFu-Lv-GOB" customClass="RadarChartView" customModule="Charts">
-                                <rect key="frame" x="76" y="103" width="240" height="128"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xiu-xK-fN8" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="37" width="343" height="280"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcK-lt-yC3">
+                                <rect key="frame" x="171" y="595" width="101" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="calculateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rs8-1J-EBE"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="DMe-Si-n26"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="PXD-3c-Zac"/>
+                        <viewLayoutGuide key="safeArea" id="fQV-AY-gmF"/>
                     </view>
                     <connections>
-                        <outlet property="chartView" destination="hFu-Lv-GOB" id="Zpp-SH-eI0"/>
+                        <outlet property="polygon" destination="xiu-xK-fN8" id="XUB-Zd-WpN"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R0I-2M-vHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yb4-tn-aY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.60000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="765.60000000000002" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>

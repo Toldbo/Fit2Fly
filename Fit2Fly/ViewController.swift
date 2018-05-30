@@ -20,15 +20,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var output2: UITextField!
     @IBOutlet weak var output3: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     @IBAction func calculateButton(_ sender: UIButton) {
        let pilots = Float64(pilotsTextField.text!) ?? 0
