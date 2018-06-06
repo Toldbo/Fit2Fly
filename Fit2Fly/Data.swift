@@ -27,10 +27,16 @@ class InputData {
     }
 
 }
-
+// A struct is an inventory list - (like a fancy version of a normal list, but where you know how the data will look every time) Like coordinates always has a x and a y
 struct Coordinate {
-    var x: Int
-    var y: Int
+    var x: Double
+    var y: Double
+}
+
+struct Points {
+    var point1: Coordinate
+    var point2: Coordinate
+    var point3: Coordinate
 }
 
 struct Interval {
