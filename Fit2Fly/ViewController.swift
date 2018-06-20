@@ -43,9 +43,15 @@ class ViewController: UIViewController {
         let estimateFuelMomentum = bratavia.fuelMoment(fuelWeight: estimateFuel)
 
         //Determining the three points to be plotted:
-        let point1 = Coordinate(x: ceil(bratavia.planeWeight + pilots + pax1 + pax2 + baggage),y: ceil(bratavia.planeMomentum + pilotMomentum + pax1Momentum + pax2Momentum + baggageMomentum))
-        let point2 = Coordinate(x: ceil(bratavia.planeWeight + pilots + pax1 + pax2 + baggage + fuel), y: ceil(bratavia.planeMomentum + pilotMomentum + pax1Momentum + pax2Momentum + baggageMomentum + fuelMomentum))
-        let point3 = Coordinate(x: ceil(bratavia.planeWeight + pilots + pax1 + pax2 + baggage + fuel - estimateFuel), y: ceil(bratavia.planeMomentum + pilotMomentum + pax1Momentum + pax2Momentum + baggageMomentum + fuelMomentum - estimateFuelMomentum))
+        let point1 = Coordinate(x: ceil(bratavia.planeMomentum + pilotMomentum + pax1Momentum + pax2Momentum + baggageMomentum), y: ceil(bratavia.planeWeight + pilots + pax1 + pax2 + baggage))
+        let point2 = Coordinate(x: ceil(bratavia.planeMomentum + pilotMomentum + pax1Momentum + pax2Momentum + baggageMomentum + fuelMomentum), y: ceil(bratavia.planeWeight + pilots + pax1 + pax2 + baggage + fuel))
+        let point3 = Coordinate(x: ceil(bratavia.planeMomentum + pilotMomentum + pax1Momentum + pax2Momentum + baggageMomentum + fuelMomentum - estimateFuelMomentum), y: ceil(bratavia.planeWeight + pilots + pax1 + pax2 + baggage + fuel - estimateFuel))
+        
+        print("point1: \(point1)")
+        
+        print("point2: \(point2)")
+        
+        print("point3: \(point3)")
         
         //Providing an output so we are able to see the coordinates
         output1.text = String(point1.x)+","+String(point1.y)

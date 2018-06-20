@@ -115,18 +115,19 @@ class PlaneData {
 // Calculated in LBS
 var bratavia = PlaneData(
     planeWeight: 2858,
-    planeMomentum: 48,
+    planeMomentum: 48000,
     pilots: Interval(min:80,max:400),
     pax1: Interval(min:0,max:400),
     pax2: Interval(min:0,max:400),
     fuelWeight: Interval(min:0,max:280),
     baggageWeight: Interval(min:0,max:120),
     estimateFuel: Interval(min:0,max:280),
-    pilotsSlope: -26.1538461538,
-    pax1Slope: -136,
-    pax2Slope: 29.14285714,
-    fuelSlope: 33.65384615,
-    baggageSlope: 16.32653061,
+    //Slopes are calculated from the slopes in the Flight Manual Section 6, figure 6-4 (R.A.I. Approval No. 148015/T
+    pilotsSlope: -0.026,
+    pax1Slope: -0.136,
+    pax2Slope: 0.029,
+    fuelSlope: 0.033,
+    baggageSlope: 0.016,
     polygon:[
         Coordinate(x:27500,y:2650),
         Coordinate(x:39500,y:3540),
