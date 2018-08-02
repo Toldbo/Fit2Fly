@@ -6,25 +6,29 @@
 //  Copyright © 2017 Christina Toldbo. All rights reserved.
 //
 
+//pre-made package for everything beginning with UI. textfields, views etc. Created when making the file: ViewController and AppDelegate.
 import UIKit
-
 class ViewController: UIViewController {
 
-    // These are the text fields you can write in (they are dragged in from the main.storyboard by holding ctrl and mouseclick)
+// Text fields for writing in (The fields are created in the Main.storyboard and dragged in by bringing up both screens and holding ctrl and mouseclick)
     @IBOutlet weak var pilotsTextField: UITextField!
     @IBOutlet weak var pax1TextField: UITextField!
     @IBOutlet weak var pax2TextField: UITextField!
     @IBOutlet weak var baggageTextField: UITextField!
     @IBOutlet weak var fuelTextField: UITextField!
     @IBOutlet weak var estimateFuelTextField: UITextField!
-    @IBOutlet weak var output1: UITextField!
-    @IBOutlet weak var output2: UITextField!
-    @IBOutlet weak var output3: UITextField!
-    
-    //Defining an emptry variable outside the calculate button so that it is available for the override function further down. We are just telling it that there will be points or nothing (the "?" means " or nothing")
-    var points: Points?
 
-    // "?? 0" means that if there is nothing put it equal to 0
+    
+    
+    
+// Here we define an emptry variable outside the calculate button so that it is available for the override function further down. We are just telling the programme that there will be either "points" or "nothing" (the "?" means " or nothing")
+    var points: Points?
+    
+
+// The button "calculate" is created on the main.storyboard and dragged to this view controller by ctrl+click. Everything underneath the button is what happens when the button is pressed. "let" is the same as variable ("var") except it cannot be changed (other languages call this a constant). These constansts are being set to the text that is inputted in the user TextFields in the UI. the "?? 0" that follows means that if there is no input the field should be put equal to 0
+    //@IBAction func calculateButton(_ sender: UIButton) {
+    
+    
     @IBAction func calculateButton(_ sender: UIButton) {
        let pilots = Float64(pilotsTextField.text!) ?? 0
        let pax1 = Float64(pax1TextField.text!) ?? 0
@@ -32,9 +36,9 @@ class ViewController: UIViewController {
        let baggage = Float64(baggageTextField.text!) ?? 0
        let fuel = Float64(fuelTextField.text!) ?? 0
        let estimateFuel = Float64(estimateFuelTextField.text!) ?? 0
-        
-    
-        
+
+
+// Calculating the momentum of each input. It uses the function defined in Data.swift and sends in for example Pilots.slope specifically for bratavia plane type (by adding bratavia in front)
         let pilotMomentum = bratavia.pilotsMoment(pilots: pilots)
         let pax1Momentum = bratavia.pax1Moment(pax1: pax1)
         let pax2Momentum = bratavia.pax2Moment(pax2: pax2)
@@ -47,29 +51,32 @@ class ViewController: UIViewController {
         let point2 = Coordinate(x: ceil(bratavia.planeMomentum + pilotMomentum + pax1Momentum + pax2Momentum + baggageMomentum + fuelMomentum), y: ceil(bratavia.planeWeight + pilots + pax1 + pax2 + baggage + fuel))
         let point3 = Coordinate(x: ceil(bratavia.planeMomentum + pilotMomentum + pax1Momentum + pax2Momentum + baggageMomentum + fuelMomentum - estimateFuelMomentum), y: ceil(bratavia.planeWeight + pilots + pax1 + pax2 + baggage + fuel - estimateFuel))
         
+        //for debugging. Providing an output so we are able to see the coordinates:
         print("point1: \(point1)")
-        
         print("point2: \(point2)")
-        
         print("point3: \(point3)")
         
-        //Providing an output so we are able to see the coordinates
-        output1.text = String(point1.x)+","+String(point1.y)
-        output2.text = String(point2.x)+","+String(point2.y)
-        output3.text = String(point3.x)+","+String(point3.y)
         
         //grouping the three points together
         points = Points(point1:point1,point2:point2,point3:point3)
         
     }
     
-    // This override function is here because when we click the button 'Graph' the segue (the magical line between the UI views) is called and it calls this "prepare" override function first. If the next destination is the PolygonController then do...
+    // This override function is here because when we click the button 'Graph' the segue (the magical line between the UI views) is called and it calls this "prepare" override function first. If the next destination is the PolygonController then do the following
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let polygonController = segue.destination as? PolygonController{
             polygonController.points = points
+            
+    
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
+    
+
 }
 
 
