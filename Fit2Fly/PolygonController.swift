@@ -12,12 +12,32 @@ import UIKit
 import Charts
 
 
-class PolygonController: UIViewController {
+// The class PolygonController has been created when we made this viewcontroller (and inherrit the class UIViewController automatically). Later we have added the "UITableViewDataSource" and "UITableViewDelegate" to create a table.
+class PolygonController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+  
+
+//PREPARING THE TABLE
+    //Creating a list of variables
+    let dataPoints = ["Zero fuel", "Take-off", "Landing"]
     
+    //Function that specifies the number of rows. It is set to have the same amount as the number of variables
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataPoints.count
+    }
+    
+    //Function that defines the table and uses the identifier (given in the Main.storyboard to the prototype cell. The function appends the text to the appropiate cell as it iterates through them.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        cell.textLabel?.text = dataPoints[indexPath.row]
+        
+        return cell
+    }
+    
+//PREPARING THE CHART
     // Defining the variable points in this Polygon controller (they are going to be sent from ViewController) and they will be points or nothing (which is what the ? means) - they only exist if you click "Calculate"
     var points : Points?
     
-    //Dragged in from Polygon controller
+    //Dragged in from Polygon controller (this is the "field" where the polygon is eventually rendered.
     @IBOutlet weak var chart: LineChartView!
     
     
@@ -28,9 +48,16 @@ class PolygonController: UIViewController {
         chart.dragEnabled = true
         chart.setScaleEnabled(true)
         chart.pinchZoomEnabled = true
+        chart.chartDescription?.enabled = false //removes a small description in the corner
+        self.chart.legend.enabled = false //removes all labels so we can make them again.
+        
+    func transformToChartDataEntry(coordinate:Coordinate) -> ChartDataEntry {
+        let data = ChartDataEntry(x: Double(coordinate.x), y: Double(coordinate.y))
+        return data
+        }
         
         
-        //DRAWING THE POLYGON
+//DRAWING THE POLYGON
         // Creating the polygon by creating an empty list called polygonBoundaries. The for loop runs though the coordinates specified in the bratavia variable in the Data.swift file and fills in the empty list by appending the polygon "corners" (5 coordinates) to the list
         var polygonBoundaries : [ChartDataEntry] = []
         for polygonBoundary in bratavia.polygon {
@@ -42,13 +69,16 @@ class PolygonController: UIViewController {
         let polygonSet = LineChartDataSet(values: polygonBoundaries, label: nil)
         let polygonSet2 = LineChartDataSet(values: [polygonBoundaries[0],polygonBoundaries[4],polygonBoundaries[3]], label: nil)
         polygonSet.setCircleColor(.black)
-        polygonSet2.setCircleColor(.black)
-        polygonSet.circleRadius = 1
         polygonSet.setColor(.black)
+        polygonSet.circleRadius = 1
+        polygonSet.drawValuesEnabled = false
+        polygonSet2.setCircleColor(.black)
+        polygonSet2.setColor(.black)
         polygonSet2.circleRadius = 1
+        polygonSet2.drawValuesEnabled = false
         
         
-        //DRAWING THE 3 COORDINATES
+//DRAWING THE 3 COORDINATES
         //creating an empty list for the points to be rendered. The "if let" means that "If the points excist" then do the thing within the block. If we did not do it like this then if there were no points then the whole application would crash whereas now we have the possibility to write a catch.
         var pointsRendered : [LineChartDataSet] = []
         
@@ -62,34 +92,33 @@ class PolygonController: UIViewController {
             point1.setColor(.blue)
             point1.setCircleColor(.blue)
             point1.circleRadius = 4
+            point1.drawValuesEnabled = false
             
             
             point2.setColor(.red)
             point2.setCircleColor(.red)
             point2.circleRadius = 4
+            point2.drawValuesEnabled = false
             
             point3.setColor(.green)
             point3.setCircleColor(.green)
             point3.circleRadius = 4
+            point3.drawValuesEnabled = false
             
             pointsRendered.append(point1)
             pointsRendered.append(point2)
             pointsRendered.append(point3)
         }
         
-        //combining polygon and points to be rendered in one variable
-        let chartRedered = LineChartData(dataSets: [polygonSet, polygonSet2] + pointsRendered)
-        chart.data = chartRedered
         
         
+        //combining polygon and points to be rendered in one variable called chartRendered. Then telling the chart (defined in the beginning of this file (dragged in from the view) that the data it should protray is the variable chartRendered
+        let chartRendered = LineChartData(dataSets: [polygonSet, polygonSet2] + pointsRendered)
+        chart.data = chartRendered
         
         
-        // This function
     }
-    func transformToChartDataEntry(coordinate:Coordinate) -> ChartDataEntry {
-        let data = ChartDataEntry(x: Double(coordinate.x), y: Double(coordinate.y))
-        return data
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
