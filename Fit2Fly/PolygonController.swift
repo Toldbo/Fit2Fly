@@ -105,6 +105,7 @@ class PolygonController: UIViewController, UITableViewDataSource, UITableViewDel
 //PREPARING THE TABLE
     //Creating a list of variables
     let dataPoints = ["Zero fuel", "Take-off", "Landing"]
+    let colors : [UIColor] = [.blue, .red, .green]
     
     //Function that specifies the number of rows. It is set to have the same amount as the number of variables
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,11 +116,22 @@ class PolygonController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TakeoffFactorsTableViewCell
         
-        if let points = points {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        let img = renderer.image { ctx in
+            ctx.cgContext.setFillColor(colors[indexPath.row].cgColor)
+            ctx.cgContext.setStrokeColor(colors[indexPath.row].cgColor)
+            ctx.cgContext.setLineWidth(10)
             
-        cell.dataLabel.text = dataPoints[indexPath.row]
-        cell.xCoordinateLabel.text = String(points[indexPath.row].x)
-        cell.yCoordinateLabel.text = String(points[indexPath.row].y)
+            let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512)
+            ctx.cgContext.addRect(rectangle)
+            ctx.cgContext.drawPath(using: .fillStroke)
+        }
+        
+        if let points = points {
+            cell.colorSymbol.image = img
+            cell.dataLabel.text = dataPoints[indexPath.row]
+            cell.xCoordinateLabel.text = String(points[indexPath.row].x)
+            cell.yCoordinateLabel.text = String(points[indexPath.row].y)
         }
         return cell
     }
