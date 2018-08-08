@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9AFA2409C8B97013C345FE0F /* Pods_Fit2Fly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD3952F6AF491B702ED106D /* Pods_Fit2Fly.framework */; };
+		A16AB7E0211B623F009C007F /* TakeoffFactorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16AB7DF211B623F009C007F /* TakeoffFactorsTableViewCell.swift */; };
 		A1D3F9C61FDD98FC00B45DB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D3F9C51FDD98FC00B45DB6 /* AppDelegate.swift */; };
 		A1D3F9C81FDD98FC00B45DB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D3F9C71FDD98FC00B45DB6 /* ViewController.swift */; };
 		A1D3F9CB1FDD98FC00B45DB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D3F9C91FDD98FC00B45DB6 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		74F4B87AD72DAFCA2A4BC456 /* Pods-Fit2Fly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit2Fly.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fit2Fly/Pods-Fit2Fly.release.xcconfig"; sourceTree = "<group>"; };
+		A16AB7DF211B623F009C007F /* TakeoffFactorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeoffFactorsTableViewCell.swift; sourceTree = "<group>"; };
 		A1D3F9C21FDD98FC00B45DB6 /* Fit2Fly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fit2Fly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D3F9C51FDD98FC00B45DB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1D3F9C71FDD98FC00B45DB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				A1D3F9C51FDD98FC00B45DB6 /* AppDelegate.swift */,
 				A1D3F9C71FDD98FC00B45DB6 /* ViewController.swift */,
 				A1D3F9C91FDD98FC00B45DB6 /* Main.storyboard */,
+				A16AB7DF211B623F009C007F /* TakeoffFactorsTableViewCell.swift */,
 				A1D3F9F31FDDA3BA00B45DB6 /* Data.swift */,
 				A1D3F9CC1FDD98FC00B45DB6 /* Assets.xcassets */,
 				A1D3F9CE1FDD98FC00B45DB6 /* LaunchScreen.storyboard */,
@@ -332,6 +335,7 @@
 			files = (
 				A1D3F9C81FDD98FC00B45DB6 /* ViewController.swift in Sources */,
 				A1D3F9F41FDDA3BA00B45DB6 /* Data.swift in Sources */,
+				A16AB7E0211B623F009C007F /* TakeoffFactorsTableViewCell.swift in Sources */,
 				A1ED5EF520BF1B9F001AAACB /* PolygonController.swift in Sources */,
 				A1D3F9C61FDD98FC00B45DB6 /* AppDelegate.swift in Sources */,
 			);

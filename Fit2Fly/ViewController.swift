@@ -21,8 +21,8 @@ class ViewController: UIViewController {
     
     
     
-// Here we define an emptry variable outside the calculate button so that it is available for the override function further down. We are just telling the programme that there will be either "points" or "nothing" (the "?" means " or nothing")
-    var points: Points?
+// Here we define an emptry list which we can fill the points into later (they are coordinates or nothing - what the "?" means)
+    var points: [Coordinate]?
     
 
 // The button "calculate" is created on the main.storyboard and dragged to this view controller by ctrl+click. Everything underneath the button is what happens when the button is pressed. "let" is the same as variable ("var") except it cannot be changed (other languages call this a constant). These constansts are being set to the text that is inputted in the user TextFields in the UI. the "?? 0" that follows means that if there is no input the field should be put equal to 0
@@ -58,11 +58,11 @@ class ViewController: UIViewController {
         
         
         //grouping the three points together
-        points = Points(point1:point1,point2:point2,point3:point3)
+        points = [point1, point2, point3]
         
     }
     
-    // This override function is here because when we click the button 'Graph' the segue (the magical line between the UI views) is called and it calls this "prepare" override function first. If the next destination is the PolygonController then do the following
+    // This override function is here because when we click the button 'Calculate' the segue (the magical line between the UI views) is called and it calls this "prepare" override function first. If the next destination is the PolygonController then do the following: points becomes points in the polygonController (it is sent there from here)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let polygonController = segue.destination as? PolygonController{
             polygonController.points = points

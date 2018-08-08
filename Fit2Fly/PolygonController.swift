@@ -15,27 +15,10 @@ import Charts
 // The class PolygonController has been created when we made this viewcontroller (and inherrit the class UIViewController automatically). Later we have added the "UITableViewDataSource" and "UITableViewDelegate" to create a table.
 class PolygonController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
-
-//PREPARING THE TABLE
-    //Creating a list of variables
-    let dataPoints = ["Zero fuel", "Take-off", "Landing"]
-    
-    //Function that specifies the number of rows. It is set to have the same amount as the number of variables
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataPoints.count
-    }
-    
-    //Function that defines the table and uses the identifier (given in the Main.storyboard to the prototype cell. The function appends the text to the appropiate cell as it iterates through them.
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = dataPoints[indexPath.row]
-        
-        return cell
-    }
     
 //PREPARING THE CHART
     // Defining the variable points in this Polygon controller (they are going to be sent from ViewController) and they will be points or nothing (which is what the ? means) - they only exist if you click "Calculate"
-    var points : Points?
+    var points : [Coordinate]?
     
     //Dragged in from Polygon controller (this is the "field" where the polygon is eventually rendered.
     @IBOutlet weak var chart: LineChartView!
@@ -83,9 +66,9 @@ class PolygonController: UIViewController, UITableViewDataSource, UITableViewDel
         var pointsRendered : [LineChartDataSet] = []
         
         if let points = points {
-            let point1 = LineChartDataSet(values: [transformToChartDataEntry(coordinate: points.point1)], label: "Zero Fuel")
-            let point2 = LineChartDataSet(values: [transformToChartDataEntry(coordinate: points.point2)], label: "Take off")
-            let point3 = LineChartDataSet(values: [transformToChartDataEntry(coordinate: points.point3)], label: "landing")
+            let point1 = LineChartDataSet(values: [transformToChartDataEntry(coordinate: points[0])], label: "Zero fuel")
+            let point2 = LineChartDataSet(values: [transformToChartDataEntry(coordinate: points[1])], label: "Takeoff")
+            let point3 = LineChartDataSet(values: [transformToChartDataEntry(coordinate: points[2])], label: "Landing")
             
             
             // color of labels (setColor), color of point (setCircleColor), and size of point
@@ -119,6 +102,28 @@ class PolygonController: UIViewController, UITableViewDataSource, UITableViewDel
         
     }
 
+//PREPARING THE TABLE
+    //Creating a list of variables
+    let dataPoints = ["Zero fuel", "Take-off", "Landing"]
+    
+    //Function that specifies the number of rows. It is set to have the same amount as the number of variables
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataPoints.count
+    }
+    
+    //Function that defines the table and uses the identifier (given in the Main.storyboard to the prototype cell. The function appends the text to the appropiate cell as it iterates through them.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TakeoffFactorsTableViewCell
+        
+        if let points = points {
+            
+        cell.dataLabel.text = dataPoints[indexPath.row]
+        cell.xCoordinateLabel.text = String(points[indexPath.row].x)
+        cell.yCoordinateLabel.text = String(points[indexPath.row].y)
+        }
+        return cell
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
