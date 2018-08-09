@@ -19,6 +19,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var estimateFuelTextField: UITextField!
 
     
+    //Designing the button
+    @IBOutlet weak var mainButton: UIButton!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //colours
+        mainButton.backgroundColor = UIColor.lightGray
+        mainButton.setTitleColor(.white, for: .normal)
+       //Shadow
+        mainButton.layer.shadowColor = UIColor.darkGray.cgColor
+        mainButton.layer.shadowRadius = 2
+        mainButton.layer.shadowOpacity = 0.5
+        mainButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+       //rounding
+        mainButton.layer.cornerRadius = mainButton.frame.height / 4
+    }
     
     
 // Here we define an emptry list which we can fill the points into later (they are coordinates or nothing - what the "?" means)
@@ -26,9 +41,6 @@ class ViewController: UIViewController {
     
 
 // The button "calculate" is created on the main.storyboard and dragged to this view controller by ctrl+click. Everything underneath the button is what happens when the button is pressed. "let" is the same as variable ("var") except it cannot be changed (other languages call this a constant). These constansts are being set to the text that is inputted in the user TextFields in the UI. the "?? 0" that follows means that if there is no input the field should be put equal to 0
-    //@IBAction func calculateButton(_ sender: UIButton) {
-    
-    
     @IBAction func calculateButton(_ sender: UIButton) {
        let pilots = Float64(pilotsTextField.text!) ?? 0
        let pax1 = Float64(pax1TextField.text!) ?? 0
@@ -36,8 +48,9 @@ class ViewController: UIViewController {
        let baggage = Float64(baggageTextField.text!) ?? 0
        let fuel = Float64(fuelTextField.text!) ?? 0
        let estimateFuel = Float64(estimateFuelTextField.text!) ?? 0
-
-
+        
+        
+     
 // Calculating the momentum of each input. It uses the function defined in Data.swift and sends in for example Pilots.slope specifically for bratavia plane type (by adding bratavia in front)
         let pilotMomentum = bratavia.pilotsMoment(pilots: pilots)
         let pax1Momentum = bratavia.pax1Moment(pax1: pax1)
@@ -62,11 +75,52 @@ class ViewController: UIViewController {
         
     }
     
+    //creating a function for UI alerts to the user
+    func createAlert (title:String, message:String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title:"OK",style:UIAlertActionStyle.default, handler: { (action) in alert.dismiss(animated: true, completion: nil)
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
     // This override function is here because when we click the button 'Calculate' the segue (the magical line between the UI views) is called and it calls this "prepare" override function first. If the next destination is the PolygonController then do the following: points becomes points in the polygonController (it is sent there from here)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let polygonController = segue.destination as? PolygonController{
             polygonController.points = points
+    
+    //When the calculate button is pressed and the seague is prepared the program check several if-statements below and displays alerts if the user has not met the requirements. The function for creating alerts are created earlier on this page
+        //Checking that the user has input any data
+        if pilotsTextField.text?.isEmpty ?? true &&
+           pax1TextField.text?.isEmpty ?? true &&
+           pax2TextField.text?.isEmpty ?? true &&
+           baggageTextField.text?.isEmpty ?? true &&
+           fuelTextField.text?.isEmpty ?? true &&
+           estimateFuelTextField.text?.isEmpty ?? true {
+           createAlert(title: "Data missing", message: "Enter data to proceed")
+            }
             
+        //Checking that there are pilots
+        if pilotsTextField.text?.isEmpty ?? true {
+            createAlert(title: "You must have pilots", message: "Enter weight of pilots")
+            }
+            
+        //Checking that there are fuel
+        if fuelTextField.text?.isEmpty ?? true {
+            createAlert(title: "You do not have any fuel", message: "Enter fuel to proceed")
+            }
+            
+        //Checking that the user is planning on using fuel
+        if estimateFuelTextField.text?.isEmpty ?? true {
+            createAlert(title: "You are not planning on using any fuel", message: "Enter estimated fuel to contuinue")
+            }
+            
+        //Checking that there is extra fuel
+        if estimateFuelTextField.text == fuelTextField.text {
+            createAlert(title: "Too little fuel!", message: "Your must have more fuel than you estimate that you will use")
+            }
     
         }
     }

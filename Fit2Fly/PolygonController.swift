@@ -28,9 +28,6 @@ class PolygonController: UIViewController, UITableViewDataSource, UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chart.dragEnabled = true
-        chart.setScaleEnabled(true)
-        chart.pinchZoomEnabled = true
         chart.chartDescription?.enabled = false //removes a small description in the corner
         self.chart.legend.enabled = false //removes all labels so we can make them again.
         
