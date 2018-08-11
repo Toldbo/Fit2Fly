@@ -31,6 +31,7 @@ class PolygonController: UIViewController, UITableViewDataSource, UITableViewDel
         chart.chartDescription?.enabled = false //removes a small description in the corner
         self.chart.legend.enabled = false //removes all labels so we can make them again.
         
+        
     func transformToChartDataEntry(coordinate:Coordinate) -> ChartDataEntry {
         let data = ChartDataEntry(x: Double(coordinate.x), y: Double(coordinate.y))
         return data

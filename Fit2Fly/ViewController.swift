@@ -10,6 +10,7 @@
 import UIKit
 class ViewController: UIViewController {
 
+    
 // Text fields for writing in (The fields are created in the Main.storyboard and dragged in by bringing up both screens and holding ctrl and mouseclick)
     @IBOutlet weak var pilotsTextField: UITextField!
     @IBOutlet weak var pax1TextField: UITextField!
@@ -18,21 +19,37 @@ class ViewController: UIViewController {
     @IBOutlet weak var fuelTextField: UITextField!
     @IBOutlet weak var estimateFuelTextField: UITextField!
 
+    func assignbackground(){
+        let background = UIImage(named: "background5")
+
+        var imageView : UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.contentMode =  UIViewContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = background
+        imageView.center = view.center
+        view.addSubview(imageView)
+        self.view.sendSubview(toBack: imageView)
+    }
     
     //Designing the button
     @IBOutlet weak var mainButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //colours
-        mainButton.backgroundColor = UIColor.lightGray
-        mainButton.setTitleColor(.white, for: .normal)
-       //Shadow
-        mainButton.layer.shadowColor = UIColor.darkGray.cgColor
-        mainButton.layer.shadowRadius = 2
-        mainButton.layer.shadowOpacity = 0.5
-        mainButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-       //rounding
-        mainButton.layer.cornerRadius = mainButton.frame.height / 4
+       assignbackground()
+
+        
+        let borderAlpha : CGFloat = 0.7
+        let backgroundAlpha : CGFloat = 0.7
+        let cornerRadius : CGFloat = mainButton.frame.height / 4
+        
+        //mainButton.frame = CGRectMake(100, 100, 200, 40)
+        mainButton.setTitle("Calculate", for: UIControlState.normal)
+        mainButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        mainButton.backgroundColor = UIColor(white: 0.5, alpha: backgroundAlpha)
+        mainButton.layer.borderWidth = 1.0
+        mainButton.layer.borderColor = UIColor(white: 1.0, alpha: borderAlpha).cgColor
+        mainButton.layer.cornerRadius = cornerRadius
     }
     
     
@@ -92,29 +109,30 @@ class ViewController: UIViewController {
             polygonController.points = points
     
     //When the calculate button is pressed and the seague is prepared the program check several if-statements below and displays alerts if the user has not met the requirements. The function for creating alerts are created earlier on this page
-        //Checking that the user has input any data
-        if pilotsTextField.text?.isEmpty ?? true &&
-           pax1TextField.text?.isEmpty ?? true &&
-           pax2TextField.text?.isEmpty ?? true &&
-           baggageTextField.text?.isEmpty ?? true &&
-           fuelTextField.text?.isEmpty ?? true &&
-           estimateFuelTextField.text?.isEmpty ?? true {
-           createAlert(title: "Data missing", message: "Enter data to proceed")
-            }
             
         //Checking that there are pilots
-        if pilotsTextField.text?.isEmpty ?? true {
+        if pilotsTextField.text?.isEmpty ?? true || (Int(pilotsTextField.text!)!) == 0 {
             createAlert(title: "You must have pilots", message: "Enter weight of pilots")
             }
             
+        //Checking that the pilots weigh enough
+            if let pilotsValue = Int(pilotsTextField.text ?? "") {
+                if pilotsValue < 100 {
+                    createAlert(title: "Pilot error", message: "Your pilot(s) weigh less than 100 LBS or 45 kg")
+                    }
+                }
+            
+            
+            
+            
         //Checking that there are fuel
-        if fuelTextField.text?.isEmpty ?? true {
-            createAlert(title: "You do not have any fuel", message: "Enter fuel to proceed")
+        if fuelTextField.text?.isEmpty ?? true || (Int(fuelTextField.text!)!) == 0  {
+            createAlert(title: "No fuel", message: "Enter fuel to proceed")
             }
             
         //Checking that the user is planning on using fuel
-        if estimateFuelTextField.text?.isEmpty ?? true {
-            createAlert(title: "You are not planning on using any fuel", message: "Enter estimated fuel to contuinue")
+        if estimateFuelTextField.text?.isEmpty ?? true || (Int(estimateFuelTextField.text!)!) == 0 {
+            createAlert(title: "No estimated fuel usage", message: "Enter estimated fuel to contuinue")
             }
             
         //Checking that there is extra fuel
