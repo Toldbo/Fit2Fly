@@ -47,16 +47,24 @@ class PolygonController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         
         // We have to create the polygon by making two data sets (otherwise we are apparently not allowed to give two y values to the same x value in a line chart. The polygonSet has all the corners (but does not plot the last, while polygonSet2 has only the first, and the two last (hence the whole polygon is drawn)
-        let polygonSet = LineChartDataSet(values: polygonBoundaries, label: nil)
+        let polygonSet = LineChartDataSet(values: [polygonBoundaries[0],polygonBoundaries[1],polygonBoundaries[2],polygonBoundaries[3]], label: nil)
         let polygonSet2 = LineChartDataSet(values: [polygonBoundaries[0],polygonBoundaries[4],polygonBoundaries[3]], label: nil)
+        let polygonSet3 = LineChartDataSet(values: [polygonBoundaries[5],polygonBoundaries[6]], label: nil)
+        
         polygonSet.setCircleColor(.black)
         polygonSet.setColor(.black)
         polygonSet.circleRadius = 1
         polygonSet.drawValuesEnabled = false
+        
         polygonSet2.setCircleColor(.black)
         polygonSet2.setColor(.black)
         polygonSet2.circleRadius = 1
         polygonSet2.drawValuesEnabled = false
+        
+        polygonSet3.setCircleColor(.green)
+        polygonSet3.setColor(.green)
+        polygonSet3.circleRadius = 1
+        polygonSet3.drawValuesEnabled = false
         
         
 //DRAWING THE 3 COORDINATES
@@ -94,7 +102,7 @@ class PolygonController: UIViewController, UITableViewDataSource, UITableViewDel
         
         
         //combining polygon and points to be rendered in one variable called chartRendered. Then telling the chart (defined in the beginning of this file (dragged in from the view) that the data it should protray is the variable chartRendered
-        let chartRendered = LineChartData(dataSets: [polygonSet, polygonSet2] + pointsRendered)
+        let chartRendered = LineChartData(dataSets: [polygonSet, polygonSet2, polygonSet3] + pointsRendered)
         chart.data = chartRendered
         
         

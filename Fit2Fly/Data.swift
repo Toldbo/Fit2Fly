@@ -144,9 +144,12 @@ var bratavia = PlaneData(
     polygon:[
         Coordinate(x:27500,y:2650),
         Coordinate(x:39500,y:3540),
-        Coordinate(x:57500,y:4320),
-        Coordinate(x:89000,y:4320),
-        Coordinate(x:55000,y:2650)]
+        Coordinate(x:57500,y:4321),
+        Coordinate(x:89000,y:4321),
+        Coordinate(x:55000,y:2650),
+//Line for maximum landing weight limit
+        Coordinate(x:27500,y:4100),
+        Coordinate(x:89000,y:4100)]
 )
 
 

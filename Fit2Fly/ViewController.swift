@@ -19,8 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var fuelTextField: UITextField!
     @IBOutlet weak var estimateFuelTextField: UITextField!
 
+// Background function https://stackoverflow.com/questions/27049937/how-to-set-a-background-image-in-xcode-using-swift
     func assignbackground(){
-        let background = UIImage(named: "background5")
+        let background = UIImage(named: "background4")
 
         var imageView : UIImageView!
         imageView = UIImageView(frame: view.bounds)
@@ -32,18 +33,22 @@ class ViewController: UIViewController {
         self.view.sendSubview(toBack: imageView)
     }
     
-    //Designing the button
+    
+    
+    
+    //drag-in of button
     @IBOutlet weak var mainButton: UIButton!
+    
+    //Defining load view:
     override func viewDidLoad() {
         super.viewDidLoad()
-       assignbackground()
-
+        assignbackground() //Assign background function
         
         let borderAlpha : CGFloat = 0.7
         let backgroundAlpha : CGFloat = 0.7
         let cornerRadius : CGFloat = mainButton.frame.height / 4
         
-        //mainButton.frame = CGRectMake(100, 100, 200, 40)
+        mainButton.frame = CGRect(x: 100, y: 100,  width: 200, height: 40)
         mainButton.setTitle("Calculate", for: UIControlState.normal)
         mainButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         mainButton.backgroundColor = UIColor(white: 0.5, alpha: backgroundAlpha)
